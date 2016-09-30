@@ -8,45 +8,71 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CSVReader {
-	private static String SEPARATOR = ";";
+/**
+ * Classe CSVReader : classe utilitaire de lecture d'un fichier CSV.
+ * 
+ * @author JLuc
+ *
+ */
+public final class CSVReader {
 
-	public static List<String[]> readFile(File file) {
+    /**
+     * Caractère de séparation d'éléments.
+     */
+    private static String mSEPARATOR = ";";
 
-		List<String[]> result = new ArrayList<String[]>();
+    /**
+     * Constructeur par défaut.
+     */
+    private CSVReader() {
 
-		FileReader fr;
-		BufferedReader br;
-		try {
-			fr = new FileReader(file);
-			br = new BufferedReader(fr);
+    }
 
-			for (String line = br.readLine(); line != null; line = br.readLine()) {
-				String[] readedLine = line.split(SEPARATOR);
-				final int size = readedLine.length;
-				if (size == 0) {
-					continue;
-				}
+    /**
+     * Lecture du fichier CSV.
+     * 
+     * @param file
+     *            Fichier à lire
+     * @return la liste des éléments du fichier
+     */
+    public static List<String[]> readFile(final File file) {
 
-				String debut = readedLine[0].trim();
-				if (debut.length() == 0 && size == 1) {
-					continue;
-				}
-				if (debut.startsWith("#")) {
-					continue;
-				}
-				result.add(readedLine);
-			}
+        List<String[]> result = new ArrayList<String[]>();
 
-			br.close();
-			fr.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+        FileReader fr;
+        BufferedReader br;
+        try {
+            fr = new FileReader(file);
+            br = new BufferedReader(fr);
 
-		return result;
-	}
+            for (String line = br.readLine(); line != null; line = br.readLine()) {
+                String[] readedLine = line.split(mSEPARATOR);
+                final int size = readedLine.length;
+                if (size == 0) {
+                    continue;
+                }
+
+                String debut = readedLine[0].trim();
+                if (debut.length() == 0 && size == 1) {
+                    continue;
+                }
+                if (debut.startsWith("#")) {
+                    continue;
+                }
+                result.add(readedLine);
+            }
+
+            br.close();
+            fr.close();
+        } catch (FileNotFoundException e) {
+            // TODO : Voir la gestion des exceptions
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO : Voir la gestion des exceptions
+            e.printStackTrace();
+        }
+
+        return result;
+    }
 
 }

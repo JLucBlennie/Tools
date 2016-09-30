@@ -4,19 +4,63 @@ import java.util.List;
 
 import com.jlb.tools.metamodel.criterion.ICriterion;
 
+/**
+ * Interface IDataProcessorServices : Services d'accès à la base de données.
+ * 
+ * @author JLuc
+ *
+ */
 public interface IDataProcessorServices {
 
-	public void createDatabase();
+    /**
+     * Création de la base de données.
+     */
+    void createDatabase();
 
-	public void storeEntities(List<Entity> entities);
+    /**
+     * Sauvegarde des entités.
+     * 
+     * @param entities
+     *            Liste des entités à sauvegarder
+     */
+    void storeEntities(List<Entity> entities);
 
-	public List<Entity> requestEntities(ICriterion criterion);
+    /**
+     * Requète sur les entités.
+     * 
+     * @param criterion
+     *            Critère de requète
+     * @return La liste des entités résultat
+     */
+    List<Entity> requestEntities(ICriterion criterion);
 
-	public List<Link> requestLinks(Entity entity);
+    /**
+     * Requète sur les liens.
+     * 
+     * @param entity
+     *            Entité du lien
+     * @return Liste des liens
+     */
+    List<Link> requestLinks(Entity entity);
 
-	public void deleteObjects(List<Entity> entities);
+    /**
+     * Suppression des entités.
+     * 
+     * @param entities
+     *            Liste des entités à supprimer
+     */
+    void deleteEntities(List<Entity> entities);
 
-	public void deleteLinks(List<Link> links);
+    /**
+     * Suppression des liens.
+     * 
+     * @param links
+     *            Liste de liens à supprimer
+     */
+    void deleteLinks(List<Link> links);
 
-	public void endDatabaseService();
+    /**
+     * Fermeture du service de base de données.
+     */
+    void endDatabaseService();
 }

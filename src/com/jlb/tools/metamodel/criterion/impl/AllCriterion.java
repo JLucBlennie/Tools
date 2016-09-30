@@ -1,39 +1,54 @@
 package com.jlb.tools.metamodel.criterion.impl;
 
 import com.jlb.tools.metamodel.Entity;
-import com.jlb.tools.metamodel.criterion.E_OPERATOR;
+import com.jlb.tools.metamodel.criterion.Operator;
 import com.jlb.tools.metamodel.criterion.ICriterion;
 
+/**
+ * Classe AllCriterion : Critère pour récupérer toutes les entités du même type.
+ * 
+ * @author JLuc
+ *
+ */
 public class AllCriterion implements ICriterion<Entity> {
 
-	private String mTableName;
+    /**
+     * Nom de la table pour le type d'entité à récupérer.
+     */
+    private String mTableName;
 
-	public AllCriterion(String tableName) {
-		mTableName = tableName;
-	}
+    /**
+     * Constructeur.
+     * 
+     * @param tableName
+     *            Table de recherche
+     */
+    public AllCriterion(final String tableName) {
+        mTableName = tableName;
+    }
 
-	@Override
-	public String getTableName() {
-		return mTableName;
-	}
+    @Override
+    public final String getTableName() {
+        return mTableName;
+    }
 
-	@Override
-	public Entity getValue() {
-		return null;
-	}
+    @Override
+    public final Entity getValue() {
+        return null;
+    }
 
-	@Override
-	public E_OPERATOR getOperator() {
-		return null;
-	}
+    @Override
+    public final Operator getOperator() {
+        return null;
+    }
 
-	@Override
-	public String getAttributeName() {
-		return null;
-	}
+    @Override
+    public final String getAttributeName() {
+        return null;
+    }
 
-	@Override
-	public String toString() {
-		return "Tous les elements de type " + mTableName;
-	}
+    @Override
+    public final String toString() {
+        return "Tous les elements de type " + mTableName;
+    }
 }

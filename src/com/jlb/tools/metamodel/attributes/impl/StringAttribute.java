@@ -2,57 +2,98 @@ package com.jlb.tools.metamodel.attributes.impl;
 
 import com.jlb.tools.metamodel.attributes.IAttribute;
 
+/**
+ * Classe StringAttribute : Attribut de type String.
+ * 
+ * @author JLuc
+ *
+ */
 public class StringAttribute implements IAttribute<String> {
 
-	private String mName;
-	private String mValue;
-	private String mUnit = "";
+    /**
+     * Nom de l'attribut.
+     */
+    private String mName;
 
-	public StringAttribute(String name) {
-		mName = name;
-		mValue = null;
-		mUnit = "";
-	}
+    /**
+     * Valeur de l'attribut.
+     */
+    private String mValue;
 
-	public StringAttribute(String name, String value) {
-		mName = name;
-		mValue = value;
-		mUnit = "";
-	}
+    /**
+     * Unité de l'attribut.
+     */
+    private String mUnit = "";
 
-	public StringAttribute(String name, String value, String unit) {
-		mName = name;
-		mValue = value;
-		mUnit = unit;
-	}
+    /**
+     * Constructeur avec le nom.
+     * 
+     * @param name
+     *            Nom de l'attribut
+     */
+    public StringAttribute(final String name) {
+        mName = name;
+        mValue = null;
+        mUnit = "";
+    }
 
-	@Override
-	public String getName() {
-		return mName;
-	}
+    /**
+     * Constructeur avec nom et valeur.
+     * 
+     * @param name
+     *            Nom de l'attribut
+     * @param value
+     *            Valeur de l'attribut
+     */
+    public StringAttribute(final String name, final String value) {
+        mName = name;
+        mValue = value;
+        mUnit = "";
+    }
 
-	@Override
-	public String getValue() {
-		return mValue;
-	}
+    /**
+     * Constructeur avec nom, valeur et unité.
+     * 
+     * @param name
+     *            Nom de l'attribut
+     * @param value
+     *            Valeur de l'attribut
+     * @param unit
+     *            Unité de l'attribut
+     */
+    public StringAttribute(final String name, final String value, final String unit) {
+        mName = name;
+        mValue = value;
+        mUnit = unit;
+    }
 
-	@Override
-	public void setValue(String value) {
-		mValue = value;
-	}
+    @Override
+    public final String getName() {
+        return mName;
+    }
 
-	@Override
-	public String getUnit() {
-		return mUnit;
-	}
+    @Override
+    public final String getValue() {
+        return mValue;
+    }
 
-	@Override
-	public String getType() {
-		return "string";
-	}
+    @Override
+    public final void setValue(final String value) {
+        mValue = value;
+    }
 
-	@Override
-	public String toString() {
-		return "Attribut (String) " + mName + " = " + mValue + (mUnit.isEmpty() ? "" : " " + mUnit);
-	}
+    @Override
+    public final String getUnit() {
+        return mUnit;
+    }
+
+    @Override
+    public final String getType() {
+        return "string";
+    }
+
+    @Override
+    public final String toString() {
+        return "Attribut (String) " + mName + " = " + mValue + (mUnit.isEmpty() ? "" : " " + mUnit);
+    }
 }

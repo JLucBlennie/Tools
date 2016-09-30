@@ -1,31 +1,71 @@
 package com.jlb.tools.metamodel;
 
+/**
+ * Classe Link : Description d'un lien.
+ * 
+ * @author JLuc
+ *
+ */
 public class Link {
 
-	private String mName;
-	private Entity mSource;
-	private Entity mDestination;
+    /**
+     * Nom du lien.
+     */
+    private String mName;
 
-	public Link(Entity src, Entity dest) {
-		mName = "Link" + src.getClass().getSimpleName() + dest.getClass().getSimpleName();
-		mSource = src;
-		mDestination = dest;
-	}
+    /**
+     * Entité source.
+     */
+    private Entity mSource;
 
-	public Entity getSource() {
-		return mSource;
-	}
+    /**
+     * Entité cible.
+     */
+    private Entity mDestination;
 
-	public Entity getDestination() {
-		return mDestination;
-	}
+    /**
+     * Constructeur.
+     * 
+     * @param src
+     *            Entité source
+     * @param dest
+     *            Entité cible
+     */
+    public Link(final Entity src, final Entity dest) {
+        mName = "Link" + src.getClass().getSimpleName() + dest.getClass().getSimpleName();
+        mSource = src;
+        mDestination = dest;
+    }
 
-	public String getName() {
-		return mName;
-	}
+    /**
+     * Récupère l'entité source.
+     * 
+     * @return l'entité source
+     */
+    public final Entity getSource() {
+        return mSource;
+    }
 
-	@Override
-	public String toString() {
-		return "Link " + mName + " - " + mSource + " --> " + mDestination;
-	}
+    /**
+     * Récupère l'entité cible.
+     * 
+     * @return l'entité cible
+     */
+    public final Entity getDestination() {
+        return mDestination;
+    }
+
+    /**
+     * Récupération du nom du lien.
+     * 
+     * @return le nom du lien
+     */
+    public final String getName() {
+        return mName;
+    }
+
+    @Override
+    public final String toString() {
+        return "Link " + mName + " - " + mSource + " --> " + mDestination;
+    }
 }

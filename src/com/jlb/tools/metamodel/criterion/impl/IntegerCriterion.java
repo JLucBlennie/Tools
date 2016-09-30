@@ -1,44 +1,78 @@
 package com.jlb.tools.metamodel.criterion.impl;
 
-import com.jlb.tools.metamodel.criterion.E_OPERATOR;
 import com.jlb.tools.metamodel.criterion.ICriterion;
+import com.jlb.tools.metamodel.criterion.Operator;
 
+/**
+ * Critère de type integer.
+ * 
+ * @author JLuc
+ *
+ */
 public class IntegerCriterion implements ICriterion<Integer> {
 
-	private String mTableName;
-	private E_OPERATOR mOperator;
-	private int mValue;
-	private String mAttributeName;
+    /**
+     * Nom de la table.
+     */
+    private String mTableName;
 
-	public IntegerCriterion(String tableName, String attributeName, E_OPERATOR operator, int value) {
-		mTableName = tableName;
-		mOperator = operator;
-		mAttributeName = attributeName;
-		mValue = value;
-	}
+    /**
+     * Opérateur.
+     */
+    private Operator mOperator;
 
-	@Override
-	public String getTableName() {
-		return mTableName;
-	}
+    /**
+     * Valeur.
+     */
+    private int mValue;
 
-	@Override
-	public Integer getValue() {
-		return mValue;
-	}
+    /**
+     * Nom de l'attribut.
+     */
+    private String mAttributeName;
 
-	@Override
-	public E_OPERATOR getOperator() {
-		return mOperator;
-	}
+    /**
+     * Constructeur.
+     * 
+     * @param tableName
+     *            Nom de la table
+     * @param attributeName
+     *            Nom de l'attribut
+     * @param operator
+     *            Opérateur
+     * @param value
+     *            Valeur
+     */
+    public IntegerCriterion(final String tableName, final String attributeName, final Operator operator,
+            final int value) {
+        mTableName = tableName;
+        mOperator = operator;
+        mAttributeName = attributeName;
+        mValue = value;
+    }
 
-	@Override
-	public String getAttributeName() {
-		return mAttributeName;
-	}
+    @Override
+    public final String getTableName() {
+        return mTableName;
+    }
 
-	@Override
-	public String toString() {
-		return mTableName + " - " + mAttributeName + " " + mOperator.name() + " " + mValue;
-	}
+    @Override
+    public final Integer getValue() {
+        return mValue;
+    }
+
+    @Override
+    public final Operator getOperator() {
+        return mOperator;
+    }
+
+    @Override
+    public final String getAttributeName() {
+        return mAttributeName;
+    }
+
+    @Override
+    public final String toString() {
+        return mTableName + " - " + mAttributeName + " " + mOperator.name() + " " + mValue;
+    }
 }

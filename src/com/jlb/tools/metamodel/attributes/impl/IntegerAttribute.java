@@ -2,63 +2,112 @@ package com.jlb.tools.metamodel.attributes.impl;
 
 import com.jlb.tools.metamodel.attributes.IAttribute;
 
+/**
+ * Classe IntegerAttribute : Attribut de type integer.
+ * 
+ * @author JLuc
+ *
+ */
 public class IntegerAttribute implements IAttribute<Integer> {
 
-	private String mName;
-	private int mValue;
-	private String mUnit;
+    /**
+     * Nom de l'attribut.
+     */
+    private String mName;
 
-	public IntegerAttribute(String name) {
-		mName = name;
-		mValue = -1;
-		mUnit = "";
-	}
+    /**
+     * Valeur de l'attribut.
+     */
+    private int mValue;
 
-	public IntegerAttribute(String name, String unit) {
-		mName = name;
-		mValue = -1;
-		mUnit = unit;
-	}
+    /**
+     * Unité de l'attribut.
+     */
+    private String mUnit;
 
-	public IntegerAttribute(String name, int value) {
-		mName = name;
-		mValue = value;
-		mUnit = "";
-	}
+    /**
+     * Constructeur avec le nom.
+     * 
+     * @param name
+     *            Nom de l'attribut
+     */
+    public IntegerAttribute(final String name) {
+        mName = name;
+        mValue = -1;
+        mUnit = "";
+    }
 
-	public IntegerAttribute(String name, int value, String unit) {
-		mName = name;
-		mValue = value;
-		mUnit = unit;
-	}
+    /**
+     * Constructeur avec nom et unité.
+     * 
+     * @param name
+     *            Nom de l'attribut
+     * @param unit
+     *            Unité de l'attribut
+     */
+    public IntegerAttribute(final String name, final String unit) {
+        mName = name;
+        mValue = -1;
+        mUnit = unit;
+    }
 
-	@Override
-	public String getName() {
-		return mName;
-	}
+    /**
+     * Constructeur avec nom et valeur.
+     * 
+     * @param name
+     *            Nom de l'attribut
+     * @param value
+     *            Valeur de l'attribut
+     */
+    public IntegerAttribute(final String name, final int value) {
+        mName = name;
+        mValue = value;
+        mUnit = "";
+    }
 
-	@Override
-	public Integer getValue() {
-		return mValue;
-	}
+    /**
+     * Construteur avec le nom, la valeur et l'unité.
+     * 
+     * @param name
+     *            Nom de l'attribut
+     * @param value
+     *            Valeur de l'attribut
+     * @param unit
+     *            Unité de l'attribut
+     */
+    public IntegerAttribute(final String name, final int value, final String unit) {
+        mName = name;
+        mValue = value;
+        mUnit = unit;
+    }
 
-	@Override
-	public void setValue(Integer value) {
-		mValue = value;
-	}
+    @Override
+    public final String getName() {
+        return mName;
+    }
 
-	@Override
-	public String getUnit() {
-		return mUnit;
-	}
+    @Override
+    public final Integer getValue() {
+        return mValue;
+    }
 
-	@Override
-	public String getType() {
-		return "integer";
-	}
+    @Override
+    public final void setValue(final Integer value) {
+        mValue = value;
+    }
 
-	@Override
-	public String toString() {
-		return "Attribut (Integer) " + mName + " = " + mValue + (mUnit.isEmpty() ? "" : " " + mUnit);
-	}
+    @Override
+    public final String getUnit() {
+        return mUnit;
+    }
+
+    @Override
+    public final String getType() {
+        return "integer";
+    }
+
+    @Override
+    public final String toString() {
+        return "Attribut (Integer) " + mName + " = " + mValue + (mUnit.isEmpty() ? "" : " " + mUnit);
+    }
 }
