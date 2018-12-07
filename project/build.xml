@@ -1,13 +1,7 @@
-<project name="Tools" basedir=".." default="main">
+<project name="Tools" basedir="." default="main">
 
-    <property name="src.dir"     value="src"/>
-
-    <property name="build.dir"   value="prod"/>
-    <property name="classes.dir" value="${build.dir}/classes"/>
-    <property name="jar.dir"     value="${build.dir}/jar"/>
-	<property name="report.dir"  value="${build.dir}/junitreport"/>
-	<property name="libs.log4j"  value="lib/log4j-1.2.15.jar"/>
-	<property name="libs.sqlite" value="lib/sqlite-jdbc-3.8.11.2.jar"/>
+	<!-- file With build properties -->
+	<property file="build.properties" />
 
     <target name="clean">
         <delete dir="${build.dir}"/>
@@ -15,7 +9,7 @@
 
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpath="${libs.log4j};${libs.sqlite}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpath="${libs.log4j};${libs.sqlite};${libs.commons-io}"/>
     </target>
 
     <target name="jar" depends="compile">

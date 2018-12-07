@@ -1,7 +1,7 @@
-package com.jlb.tools.metamodel.criterion;
+package org.jlb.tools.metamodel.criterion;
 
 /**
- * Interface ICriterion : Critère.
+ * Interface ICriterion : CritÃ¨re.
  * 
  * @author JLuc
  *
@@ -10,31 +10,31 @@ package com.jlb.tools.metamodel.criterion;
  */
 public interface ICriterion<T> {
 
-    /**
-     * Récupération du nom de la table.
-     * 
-     * @return Nom de la table
-     */
-    String getTableName();
+	/**
+	 * RÃ©cupÃ©ration du nom de la table.
+	 * 
+	 * @return Nom de la table
+	 */
+	String getTableName();
 
-    /**
-     * Récupération de la valeur.
-     * 
-     * @return Valeur
-     */
-    T getValue();
+	/**
+	 * RÃ©cupÃ©ration de la valeur.
+	 * 
+	 * @return Valeur
+	 */
+	T getValue();
 
-    /**
-     * Récupération de l'opérateur de la requète.
-     * 
-     * @return Opérateur
-     */
-    Operator getOperator();
+	/**
+	 * RÃ©cupÃ©ration de l'opÃ©rateur de la requÃ¨te.
+	 * 
+	 * @return OpÃ©rateur
+	 */
+	Operator getOperator();
 
-    /**
-     * Récupération du nom de l'attribut.
-     * 
-     * @return Le nom de l'attribut
-     */
-    String getAttributeName();
+	/**
+	 * RÃ©cupÃ©ration du nom de l'attribut.
+	 * 
+	 * @return Le nom de l'attribut
+	 */
+	String getAttributeName();
 }

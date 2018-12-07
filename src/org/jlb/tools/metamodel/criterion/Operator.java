@@ -1,45 +1,45 @@
-package com.jlb.tools.metamodel.criterion;
+package org.jlb.tools.metamodel.criterion;
 
 /**
- * Enum : E_OPERATOR : Opérateur de requète.
+ * Enum : E_OPERATOR : OpÃ©rateur de requÃ¨te.
  * 
  * @author JLuc
  *
  */
 public enum Operator {
 
-    /**
-     * Opérateur d'égalité.
-     */
-    EQUALS {
-        @Override
-        public String toString() {
-            return "=";
-        }
-    },
-    /**
-     * Opérateur Plus grand que.
-     */
-    GREATER {
-        @Override
-        public String toString() {
-            return ">";
-        }
-    },
-    /**
-     * Opérateur Plus petit que.
-     */
-    LOWER {
-        @Override
-        public String toString() {
-            return "<";
-        }
-    }
-    // },
-    // NOT_EQUALS {
-    // @Override
-    // public String toString() {
-    // return "";
-    // }
-    // }
+	/**
+	 * OpÃ©rateur d'Ã©galitÃ©.
+	 */
+	EQUALS {
+		@Override
+		public String toString() {
+			return "=";
+		}
+	},
+	/**
+	 * OpÃ©rateur Plus grand que.
+	 */
+	GREATER {
+		@Override
+		public String toString() {
+			return ">";
+		}
+	},
+	/**
+	 * OpÃ©rateur Plus petit que.
+	 */
+	LOWER {
+		@Override
+		public String toString() {
+			return "<";
+		}
+	}
+	// },
+	// NOT_EQUALS {
+	// @Override
+	// public String toString() {
+	// return "";
+	// }
+	// }
 }

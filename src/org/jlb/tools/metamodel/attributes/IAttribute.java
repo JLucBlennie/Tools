@@ -1,4 +1,4 @@
-package com.jlb.tools.metamodel.attributes;
+package org.jlb.tools.metamodel.attributes;
 
 /**
  * Interface IAttribut : Attribut.
@@ -10,39 +10,39 @@ package com.jlb.tools.metamodel.attributes;
  */
 public interface IAttribute<T> {
 
-    /**
-     * Récupération du nom.
-     * 
-     * @return Nom de l'attribut
-     */
-    String getName();
+	/**
+	 * RÃ©cupÃ©ration du nom.
+	 * 
+	 * @return Nom de l'attribut
+	 */
+	String getName();
 
-    /**
-     * Récupération de la valeur.
-     * 
-     * @return La valeur
-     */
-    T getValue();
+	/**
+	 * RÃ©cupÃ©ration de la valeur.
+	 * 
+	 * @return La valeur
+	 */
+	T getValue();
 
-    /**
-     * Mise à jour de la valeur.
-     * 
-     * @param value
-     *            Valeur
-     */
-    void setValue(T value);
+	/**
+	 * Mise Ã  jour de la valeur.
+	 * 
+	 * @param value
+	 *            Valeur
+	 */
+	void setValue(T value);
 
-    /**
-     * Récupération de l'unité.
-     * 
-     * @return L'unité
-     */
-    String getUnit();
+	/**
+	 * RÃ©cupÃ©ration de l'unitÃ©.
+	 * 
+	 * @return L'unitï¿½
+	 */
+	String getUnit();
 
-    /**
-     * Récupération du type.
-     * 
-     * @return Nom du type
-     */
-    String getType();
+	/**
+	 * RÃ©cupÃ©ration du type.
+	 * 
+	 * @return Nom du type
+	 */
+	String getType();
 }

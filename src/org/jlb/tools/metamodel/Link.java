@@ -1,4 +1,4 @@
-package com.jlb.tools.metamodel;
+package org.jlb.tools.metamodel;
 
 /**
  * Classe Link : Description d'un lien.
@@ -8,64 +8,64 @@ package com.jlb.tools.metamodel;
  */
 public class Link {
 
-    /**
-     * Nom du lien.
-     */
-    private String mName;
+	/**
+	 * Nom du lien.
+	 */
+	private final String mName;
 
-    /**
-     * Entité source.
-     */
-    private Entity mSource;
+	/**
+	 * EntitÃ© source.
+	 */
+	private final Entity mSource;
 
-    /**
-     * Entité cible.
-     */
-    private Entity mDestination;
+	/**
+	 * EntitÃ© cible.
+	 */
+	private final Entity mDestination;
 
-    /**
-     * Constructeur.
-     * 
-     * @param src
-     *            Entité source
-     * @param dest
-     *            Entité cible
-     */
-    public Link(final Entity src, final Entity dest) {
-        mName = "Link" + src.getClass().getSimpleName() + dest.getClass().getSimpleName();
-        mSource = src;
-        mDestination = dest;
-    }
+	/**
+	 * Constructeur.
+	 * 
+	 * @param src
+	 *            EntitÃ© source
+	 * @param dest
+	 *            EntitÃ© cible
+	 */
+	public Link(final Entity src, final Entity dest) {
+		mName = "Link" + src.getClass().getSimpleName() + dest.getClass().getSimpleName();
+		mSource = src;
+		mDestination = dest;
+	}
 
-    /**
-     * Récupère l'entité source.
-     * 
-     * @return l'entité source
-     */
-    public final Entity getSource() {
-        return mSource;
-    }
+	/**
+	 * RÃ©cupÃ©re l'entitÃ© source.
+	 * 
+	 * @return l'entitÃ© source
+	 */
+	public final Entity getSource() {
+		return mSource;
+	}
 
-    /**
-     * Récupère l'entité cible.
-     * 
-     * @return l'entité cible
-     */
-    public final Entity getDestination() {
-        return mDestination;
-    }
+	/**
+	 * RÃ©cupÃ©re l'entitÃ© cible.
+	 * 
+	 * @return l'entitÃ© cible
+	 */
+	public final Entity getDestination() {
+		return mDestination;
+	}
 
-    /**
-     * Récupération du nom du lien.
-     * 
-     * @return le nom du lien
-     */
-    public final String getName() {
-        return mName;
-    }
+	/**
+	 * RÃ©cupÃ©ration du nom du lien.
+	 * 
+	 * @return le nom du lien
+	 */
+	public final String getName() {
+		return mName;
+	}
 
-    @Override
-    public final String toString() {
-        return "Link " + mName + " - " + mSource + " --> " + mDestination;
-    }
+	@Override
+	public final String toString() {
+		return "Link " + mName + " - " + mSource + " --> " + mDestination;
+	}
 }
