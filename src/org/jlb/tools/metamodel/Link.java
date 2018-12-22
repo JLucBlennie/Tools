@@ -14,14 +14,24 @@ public class Link {
 	private final String mName;
 
 	/**
-	 * Entité source.
+	 * Id de l'Entité source.
 	 */
-	private final Entity mSource;
+	private final String mSourceId;
+
+	/**
+	 * Nom de Table de la source.
+	 */
+	private final String mSourceTableName;
 
 	/**
 	 * Entité cible.
 	 */
-	private final Entity mDestination;
+	private final String mDestinationId;
+
+	/**
+	 * Nom de table de la destination.
+	 */
+	private final String mDestinationTableName;
 
 	/**
 	 * Constructeur.
@@ -33,26 +43,46 @@ public class Link {
 	 */
 	public Link(final Entity src, final Entity dest) {
 		mName = "Link" + src.getClass().getSimpleName() + dest.getClass().getSimpleName();
-		mSource = src;
-		mDestination = dest;
+		mSourceId = src.getId();
+		mDestinationId = dest.getId();
+		mSourceTableName = src.getTableName();
+		mDestinationTableName = dest.getTableName();
 	}
 
 	/**
-	 * Récupére l'entité source.
+	 * Récupére l'Id de l'entité source.
 	 * 
-	 * @return l'entité source
+	 * @return l'Id de l'entité source
 	 */
-	public final Entity getSource() {
-		return mSource;
+	public final String getSource() {
+		return mSourceId;
 	}
 
 	/**
-	 * Récupére l'entité cible.
+	 * Récupéré le nom de table de la source.
 	 * 
-	 * @return l'entité cible
+	 * @return nom de table.
 	 */
-	public final Entity getDestination() {
-		return mDestination;
+	public final String getSourceTableName() {
+		return mSourceTableName;
+	}
+
+	/**
+	 * Récupére l'Id de l'entité cible.
+	 * 
+	 * @return l'Id de l'entité cible
+	 */
+	public final String getDestination() {
+		return mDestinationId;
+	}
+
+	/**
+	 * Récupéré le nom de table de la destnation.
+	 * 
+	 * @return nom de table.
+	 */
+	public final String getDestinationTableName() {
+		return mDestinationTableName;
 	}
 
 	/**
@@ -66,6 +96,6 @@ public class Link {
 
 	@Override
 	public final String toString() {
-		return "Link " + mName + " - " + mSource + " --> " + mDestination;
+		return "Link " + mName + " - " + mSourceId + " --> " + mDestinationId;
 	}
 }

@@ -69,7 +69,7 @@ public final class CSVReader {
 		} catch (FileNotFoundException e) {
 			LogTracer.getLogger().error("Fichier non trouvé : " + file.getAbsolutePath(), e);
 		} catch (IOException e) {
-			LogTracer.getLogger().error("Erreur durent la lecture du fichier : " + file.getAbsolutePath(), e);
+			LogTracer.getLogger().error("Erreur durant la lecture du fichier : " + file.getAbsolutePath(), e);
 		}
 
 		return result;

@@ -223,6 +223,24 @@ public abstract class Entity {
 	}
 
 	/**
+	 * Récupération des liens dont la destination est du type className.
+	 * 
+	 * @param className
+	 *            Type de la Destination du lien
+	 * @return La liste des lien dont la destination est du type className
+	 */
+	public final List<Link> getLinksWithDestinationOfType(final String className) {
+		List<Link> linksOfType = new ArrayList<Link>();
+		for (Link l : mLinks) {
+			if (className.contains(l.getDestinationTableName())) {
+				linksOfType.add(l);
+			}
+		}
+
+		return linksOfType;
+	}
+
+	/**
 	 * Récupération des liens.
 	 * 
 	 * @return La liste des liens

@@ -175,10 +175,10 @@ public abstract class DataProcessorServices implements IDataProcessorServices {
 
 				// On s'occupe des liens
 				for (Link lnk : obj.getLinks()) {
-					String valuesLink = lnk.getSource().getId() + "','" + lnk.getSource().getTableName() + "','" + lnk.getDestination().getId() + "','" + lnk.getDestination().getTableName();
+					String valuesLink = lnk.getSource() + "','" + lnk.getSourceTableName() + "','" + lnk.getDestination() + "','" + lnk.getDestinationTableName();
 					mDatabaseServices.insertData("Link", valuesLink);
 					// On ajoute le lien dans le cache
-					mCacheLinks.put(lnk.getSource().getTableName() + "_" + lnk.getSource().getId() + "_" + lnk.getDestination().getTableName() + "_" + lnk.getDestination().getId(), lnk);
+					mCacheLinks.put(lnk.getSourceTableName() + "_" + lnk.getSource() + "_" + lnk.getDestinationTableName() + "_" + lnk.getDestination(), lnk);
 				}
 
 				LogTracer.getLogger().info("Persistence des liens de l'objet " + obj);
@@ -394,8 +394,8 @@ public abstract class DataProcessorServices implements IDataProcessorServices {
 	public final void deleteLinks(final List<Link> links) {
 		for (Link link : links) {
 			try {
-				mDatabaseServices.deleteDataWhere("Link", "idSrc='" + link.getSource().getId() + "' and idDest='" + link.getDestination().getId() + "'");
-				mCacheLinks.remove(link.getSource().getTableName() + "_" + link.getSource().getId() + "_" + link.getDestination().getTableName() + "_" + link.getDestination().getId());
+				mDatabaseServices.deleteDataWhere("Link", "idSrc='" + link.getSource() + "' and idDest='" + link.getDestination() + "'");
+				mCacheLinks.remove(link.getSourceTableName() + "_" + link.getSource() + "_" + link.getDestinationTableName() + "_" + link.getDestination());
 			} catch (SQLException e) {
 				LogTracer.getLogger().error("Erreur lors de la suppression du lien " + link, e);
 			}
