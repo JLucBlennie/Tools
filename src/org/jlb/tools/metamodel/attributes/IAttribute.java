@@ -6,43 +6,52 @@ package org.jlb.tools.metamodel.attributes;
  * @author JLuc
  *
  * @param <T>
- *            Type d'attribut
+ *          Type d'attribut
  */
-public interface IAttribute<T> {
+public interface IAttribute<T>
+{
 
-	/**
-	 * Récupération du nom.
-	 * 
-	 * @return Nom de l'attribut
-	 */
-	String getName();
+  /**
+   * Récupération du nom.
+   * 
+   * @return Nom de l'attribut
+   */
+  String getName();
 
-	/**
-	 * Récupération de la valeur.
-	 * 
-	 * @return La valeur
-	 */
-	T getValue();
+  /**
+   * Récupération de la valeur.
+   * 
+   * @return La valeur
+   */
+  T getValue();
 
-	/**
-	 * Mise à jour de la valeur.
-	 * 
-	 * @param value
-	 *            Valeur
-	 */
-	void setValue(T value);
+  /**
+   * Mise à jour de la valeur.
+   * 
+   * @param value
+   *          Valeur
+   */
+  void setValue(T value);
 
-	/**
-	 * Récupération de l'unité.
-	 * 
-	 * @return L'unit�
-	 */
-	String getUnit();
+  /**
+   * Récupération de l'unité.
+   * 
+   * @return L'unit�
+   */
+  String getUnit();
 
-	/**
-	 * Récupération du type.
-	 * 
-	 * @return Nom du type
-	 */
-	String getType();
+  /**
+   * Récupération du type.
+   * 
+   * @return Nom du type
+   */
+  String getType();
+
+  /**
+   * Comparaison avec un autre attribut
+   * 
+   * @param attr
+   * @return vrai si attribut identique sur les valeurs et unité
+   */
+  boolean equals(IAttribute<T> attr);
 }

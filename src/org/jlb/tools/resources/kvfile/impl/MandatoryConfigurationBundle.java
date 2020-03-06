@@ -15,49 +15,48 @@ import org.jlb.tools.resources.kvfile.api.IKeyValueFileEntry;
  */
 public class MandatoryConfigurationBundle extends GenericKeyValueFile {
 
-    /**
-     * Constructeur.
-     * 
-     * @throws MissingResourceException
-     *             Si le chargement du bundle échoue (fichier introuvable, clés
-     *             manquantes...etc.)
-     */
-    public MandatoryConfigurationBundle() {
-        super("");
-        this.setId(getClass().getName());
-        reload();
-    }
+	/**
+	 * Constructeur.
+	 * 
+	 * @throws MissingResourceException
+	 *             Si le chargement du bundle échoue (fichier introuvable, clés
+	 *             manquantes...etc.)
+	 */
+	public MandatoryConfigurationBundle() {
+		super("");
+		this.setId(getClass().getName());
+		reload();
+	}
 
-    @Override
-    public final void reload() {
-        String bundleName = getBundleName();
-        if (bundleName != null && bundleName.length() > 0) {
-            try {
-                ResourceBundle.clearCache();
-                loadBundle(bundleName, Locale.getDefault());
-                mIsLoaded = true;
-                mLastUpdate = System.currentTimeMillis();
-            } catch (RuntimeException e) {
-                setException(e);
-            }
-        } else {
-            // Rend le dico inutilisable pour la suite sans faire planter
-            // l'initialisation de la classe
-            setException(
-                    new NullPointerException("Missing parameter 'bundle' of annotation @KeyValueFile in " + getId()));
-        }
-    }
+	@Override
+	public final void reload() {
+		String bundleName = getBundleName();
+		if (bundleName != null && bundleName.length() > 0) {
+			try {
+				ResourceBundle.clearCache();
+				loadBundle(bundleName, Locale.getDefault());
+				mIsLoaded = true;
+				mLastUpdate = System.currentTimeMillis();
+			} catch (RuntimeException e) {
+				setException(e);
+			}
+		} else {
+			// Rend le dico inutilisable pour la suite sans faire planter
+			// l'initialisation de la classe
+			setException(new NullPointerException("Missing parameter 'bundle' of annotation @KeyValueFile in " + getId()));
+		}
+	}
 
-    @Override
-    public final Object getValue(final IKeyValueFileEntry key) {
-        if (!mIsLoaded) {
-            String bundleName = getBundleName();
-            if (bundleName != null && bundleName.length() > 0) {
-                loadBundle(bundleName, Locale.getDefault());
-                mIsLoaded = true;
-            }
-        }
+	@Override
+	public final Object getValue(final IKeyValueFileEntry key) {
+		if (!mIsLoaded) {
+			String bundleName = getBundleName();
+			if (bundleName != null && bundleName.length() > 0) {
+				loadBundle(bundleName, Locale.getDefault());
+				mIsLoaded = true;
+			}
+		}
 
-        return super.getValue(key);
-    }
+		return super.getValue(key);
+	}
 }

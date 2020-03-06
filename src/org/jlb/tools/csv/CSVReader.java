@@ -16,63 +16,75 @@ import org.jlb.tools.logging.LogTracer;
  * @author JLuc
  *
  */
-public final class CSVReader {
+public final class CSVReader
+{
 
-	/**
-	 * Caractère de séparation d'éléments.
-	 */
-	private static String mSEPARATOR = ";";
+  /**
+   * Caractère de séparation d'éléments.
+   */
+  private static String mSEPARATOR = ";";
 
-	/**
-	 * Constructeur par défaut.
-	 */
-	private CSVReader() {
+  /**
+   * Constructeur par défaut.
+   */
+  private CSVReader()
+  {
 
-	}
+  }
 
-	/**
-	 * Lecture du fichier CSV.
-	 * 
-	 * @param file
-	 *            Fichier à lire
-	 * @return la liste des éléments du fichier
-	 */
-	public static List<String[]> readFile(final File file) {
+  /**
+   * Lecture du fichier CSV.
+   * 
+   * @param file
+   *          Fichier à lire
+   * @return la liste des éléments du fichier
+   */
+  public static List<String[]> readFile(final File file, String separator)
+  {
 
-		List<String[]> result = new ArrayList<String[]>();
+    List<String[]> result = new ArrayList<String[]>();
 
-		FileReader fr;
-		BufferedReader br;
-		try {
-			fr = new FileReader(file);
-			br = new BufferedReader(fr);
+    FileReader fr;
+    BufferedReader br;
+    try
+    {
+      fr = new FileReader(file);
+      br = new BufferedReader(fr);
 
-			for (String line = br.readLine(); line != null; line = br.readLine()) {
-				String[] readedLine = line.split(mSEPARATOR);
-				final int size = readedLine.length;
-				if (size == 0) {
-					continue;
-				}
+      for (String line = br.readLine(); line != null; line = br.readLine())
+      {
+        String[] readedLine = line.split(separator);
+        final int size = readedLine.length;
+        if (size == 0)
+        {
+          continue;
+        }
 
-				String debut = readedLine[0].trim();
-				if (debut.length() == 0 && size == 1) {
-					continue;
-				}
-				if (debut.startsWith("#")) {
-					continue;
-				}
-				result.add(readedLine);
-			}
+        String debut = readedLine[0].trim();
+        if (debut.length() == 0 && size == 1)
+        {
+          continue;
+        }
+        if (debut.startsWith("#"))
+        {
+          continue;
+        }
+        result.add(readedLine);
+      }
 
-			br.close();
-			fr.close();
-		} catch (FileNotFoundException e) {
-			LogTracer.getLogger().error("Fichier non trouvé : " + file.getAbsolutePath(), e);
-		} catch (IOException e) {
-			LogTracer.getLogger().error("Erreur durant la lecture du fichier : " + file.getAbsolutePath(), e);
-		}
+      br.close();
+      fr.close();
+    }
+    catch (FileNotFoundException e)
+    {
+      LogTracer.getLogger().error("Fichier non trouvé : " + file.getAbsolutePath(), e);
+    }
+    catch (IOException e)
+    {
+      LogTracer.getLogger().error("Erreur durant la lecture du fichier : " + file.getAbsolutePath(), e);
+    }
 
-		return result;
-	}
+    return result;
+  }
 
 }

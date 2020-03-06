@@ -10,57 +10,81 @@ import org.jlb.tools.metamodel.criterion.ICriterion;
  * @author JLuc
  *
  */
-public interface IDataProcessorServices {
+public interface IDataProcessorServices
+{
 
-	/**
-	 * Création de la base de données.
-	 */
-	void createDatabase();
+  /**
+   * Création de la base de données.
+   */
+  void createDatabase();
 
-	/**
-	 * Sauvegarde des entités.
-	 * 
-	 * @param entities
-	 *            Liste des entités à sauvegarder
-	 */
-	void storeEntities(List<Entity> entities);
+  /**
+   * Sauvegarde des entités.
+   * 
+   * @param entities
+   *          Liste des entités à sauvegarder
+   */
+  void storeEntities(List<Entity> entities);
 
-	/**
-	 * Requéte sur les entités.
-	 * 
-	 * @param criterion
-	 *            Critére de requéte
-	 * @return La liste des entités résultat
-	 */
-	List<Entity> requestEntities(ICriterion criterion);
+  /**
+   * Requéte sur les entités.
+   * 
+   * @param criterion
+   *          Critére de requéte
+   * @return La liste des entités résultat
+   */
+  List<Entity> requestEntities(ICriterion criterion);
 
-	/**
-	 * Requéte sur les liens.
-	 * 
-	 * @param entity
-	 *            Entité du lien
-	 * @return Liste des liens
-	 */
-	List<Link> requestLinks(Entity entity);
+  /**
+   * Requéte sur les liens.
+   * 
+   * @param entity
+   *          Entité du lien
+   * @return Liste des liens
+   */
+  List<Link> requestLinks(Entity entity);
 
-	/**
-	 * Suppression des entités.
-	 * 
-	 * @param entities
-	 *            Liste des entités à supprimer
-	 */
-	void deleteEntities(List<Entity> entities);
+  /**
+   * Création des liens dans l'arborescence de l'entité
+   * 
+   * @param entity
+   *          Entité racine
+   */
+  void createAllLinks(Entity entity);
 
-	/**
-	 * Suppression des liens.
-	 * 
-	 * @param links
-	 *            Liste de liens à supprimer
-	 */
-	void deleteLinks(List<Link> links);
+  /**
+   * Suppression des entités.
+   * 
+   * @param entities
+   *          Liste des entités à supprimer
+   */
+  void deleteEntities(List<Entity> entities);
 
-	/**
-	 * Fermeture du service de base de données.
-	 */
-	void endDatabaseService();
+  /**
+   * Suppression des liens.
+   * 
+   * @param links
+   *          Liste de liens à supprimer
+   */
+  void deleteLinks(List<Link> links);
+
+  /**
+   * Fermeture du service de base de données.
+   */
+  void endDatabaseService();
+
+  /**
+   * Ouverture du service de base de données.
+   */
+  void startDatabaseService(String databasePath);
+
+  /**
+   * Debut des transaction.
+   */
+  void beginTransactions();
+
+  /**
+   * Stockage dans la base de données.
+   */
+  void commitTransactions();
 }

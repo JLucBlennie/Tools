@@ -9,31 +9,31 @@ package org.jlb.tools.resources.kvfile.api;
  * @author JLuc
  */
 public interface IKeyValueFileEntry {
-    /**
-     * Clé de l'entrée.
-     * 
-     * @return La clé de l'entrée.
-     */
-    String getKey();
+	/**
+	 * Clé de l'entrée.
+	 * 
+	 * @return La clé de l'entrée.
+	 */
+	String getKey();
 
-    /**
-     * La valeur par défaut de l'entrée lorsqu'aucune valeur n'est précisée.
-     * 
-     * @return La valeur par défaut.
-     */
-    Object getDefaultValue();
+	/**
+	 * La valeur par défaut de l'entrée lorsqu'aucune valeur n'est précisée.
+	 * 
+	 * @return La valeur par défaut.
+	 */
+	Object getDefaultValue();
 
-    /**
-     * Tableau des valeurs acceptées.
-     * 
-     * @return Le tableau des valeurs acceptées.
-     */
-    Object[] getPossibleValues();
+	/**
+	 * Tableau des valeurs acceptées.
+	 * 
+	 * @return Le tableau des valeurs acceptées.
+	 */
+	Object[] getPossibleValues();
 
-    /**
-     * Détermine si l'entrée du fichier de propriétés est obligatoire ou non.
-     * 
-     * @return <code>true</code> si l'entrée est obligatoire.
-     */
-    boolean isMandatory();
+	/**
+	 * Détermine si l'entrée du fichier de propriétés est obligatoire ou non.
+	 * 
+	 * @return <code>true</code> si l'entrée est obligatoire.
+	 */
+	boolean isMandatory();
 }

@@ -72,8 +72,7 @@ public class GenericKeyValueFileEntry implements IKeyValueFileEntry {
 			if ((field.getModifiers() & Modifier.STATIC) == Modifier.STATIC) {
 				mOwnerField = field;
 			}
-		}
-		catch (Exception e) {
+		} catch (Exception e) {
 			LogTracer.getLogger().debug(e.getMessage(), e);
 		}
 	}
@@ -91,8 +90,7 @@ public class GenericKeyValueFileEntry implements IKeyValueFileEntry {
 					owner = (GenericKeyValueFile) o;
 				}
 			}
-		}
-		catch (IllegalArgumentException | IllegalAccessException e) {
+		} catch (IllegalArgumentException | IllegalAccessException e) {
 			LogTracer.getLogger().debug(e.getMessage(), e);
 		}
 		return owner;

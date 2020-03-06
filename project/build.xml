@@ -9,7 +9,7 @@
 
     <target name="compile">
         <mkdir dir="${classes.dir}"/>
-        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpath="${libs.log4j};${libs.sqlite};${libs.commons-io}"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" classpath="${libs.log4j};${libs.sqlite};${libs.hsqldb};${libs.commons-io}" debug="${debug}" optimize="${optimize}"/>
     </target>
 
     <target name="jar" depends="compile">

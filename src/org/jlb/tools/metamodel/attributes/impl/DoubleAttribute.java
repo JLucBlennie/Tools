@@ -8,106 +8,125 @@ import org.jlb.tools.metamodel.attributes.IAttribute;
  * @author JLuc
  *
  */
-public class DoubleAttribute implements IAttribute<Double> {
+public class DoubleAttribute implements IAttribute<Double>
+{
 
-	/**
-	 * Nom de l'attribut.
-	 */
-	private final String mName;
+  /**
+   * Nom de l'attribut.
+   */
+  private final String mName;
 
-	/**
-	 * Valeur de l'attribut.
-	 */
-	private double mValue;
+  /**
+   * Valeur de l'attribut.
+   */
+  private double mValue;
 
-	/**
-	 * Unité de l'attribut.
-	 */
-	private final String mUnit;
+  /**
+   * Unité de l'attribut.
+   */
+  private final String mUnit;
 
-	/**
-	 * Constructeur sur le nom.
-	 * 
-	 * @param name
-	 *            Nom de l'attribut
-	 */
-	public DoubleAttribute(final String name) {
-		mName = name;
-		mValue = -1.0;
-		mUnit = "";
-	}
+  /**
+   * Constructeur sur le nom.
+   * 
+   * @param name
+   *          Nom de l'attribut
+   */
+  public DoubleAttribute(final String name)
+  {
+    mName = name;
+    mValue = -1.0;
+    mUnit = "";
+  }
 
-	/**
-	 * Constructeur sur le nom et l'unité.
-	 * 
-	 * @param name
-	 *            Nom de l'attribut
-	 * @param unit
-	 *            Unité de l'attribut
-	 */
-	public DoubleAttribute(final String name, final String unit) {
-		mName = name;
-		mValue = -1.0;
-		mUnit = unit;
-	}
+  /**
+   * Constructeur sur le nom et l'unité.
+   * 
+   * @param name
+   *          Nom de l'attribut
+   * @param unit
+   *          Unité de l'attribut
+   */
+  public DoubleAttribute(final String name, final String unit)
+  {
+    mName = name;
+    mValue = -1.0;
+    mUnit = unit;
+  }
 
-	/**
-	 * Constructeur sur le nom et la valeur.
-	 * 
-	 * @param name
-	 *            Nom de l'attribut
-	 * @param value
-	 *            Valeur de l'attribut
-	 */
-	public DoubleAttribute(final String name, final double value) {
-		mName = name;
-		mValue = value;
-		mUnit = "";
-	}
+  /**
+   * Constructeur sur le nom et la valeur.
+   * 
+   * @param name
+   *          Nom de l'attribut
+   * @param value
+   *          Valeur de l'attribut
+   */
+  public DoubleAttribute(final String name, final double value)
+  {
+    mName = name;
+    mValue = value;
+    mUnit = "";
+  }
 
-	/**
-	 * Constructeur sur le nom, la valeur et l'unité.
-	 * 
-	 * @param name
-	 *            Nom de l'attribut
-	 * @param value
-	 *            Valeur de l'attribut
-	 * @param unit
-	 *            Unité de l'attribut
-	 */
-	public DoubleAttribute(final String name, final double value, final String unit) {
-		mName = name;
-		mValue = value;
-		mUnit = unit;
-	}
+  /**
+   * Constructeur sur le nom, la valeur et l'unité.
+   * 
+   * @param name
+   *          Nom de l'attribut
+   * @param value
+   *          Valeur de l'attribut
+   * @param unit
+   *          Unité de l'attribut
+   */
+  public DoubleAttribute(final String name, final double value, final String unit)
+  {
+    mName = name;
+    mValue = value;
+    mUnit = unit;
+  }
 
-	@Override
-	public final String getName() {
-		return mName;
-	}
+  @Override
+  public final String getName()
+  {
+    return mName;
+  }
 
-	@Override
-	public final Double getValue() {
-		return mValue;
-	}
+  @Override
+  public final Double getValue()
+  {
+    return mValue;
+  }
 
-	@Override
-	public final void setValue(final Double value) {
-		mValue = value;
-	}
+  @Override
+  public final void setValue(final Double value)
+  {
+    mValue = value;
+  }
 
-	@Override
-	public final String getUnit() {
-		return mUnit;
-	}
+  @Override
+  public final String getUnit()
+  {
+    return mUnit;
+  }
 
-	@Override
-	public final String getType() {
-		return "double";
-	}
+  @Override
+  public final String getType()
+  {
+    return "double";
+  }
 
-	@Override
-	public final String toString() {
-		return "Attribut (Double) " + mName + " = " + mValue + (mUnit.isEmpty() ? "" : " " + mUnit);
-	}
+  @Override
+  public final String toString()
+  {
+    return "Attribut (Double) " + mName + " = " + mValue + (mUnit.isEmpty() ? "" : " " + mUnit);
+  }
+
+  @Override
+  public boolean equals(IAttribute<Double> attr)
+  {
+    double value = attr.getValue();
+    String unit = attr.getUnit();
+    return value == mValue && unit.equals(unit);
+  }
 }

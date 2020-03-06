@@ -32,31 +32,31 @@ import java.lang.annotation.Target;
 @Target({ ElementType.TYPE })
 public @interface KeyValueFile {
 
-    /**
-     * Retourne le caractere de debut de commentaire.
-     * 
-     * @return le caractere
-     */
-    String commentsDelimiter() default "#";
+	/**
+	 * Retourne le caractere de debut de commentaire.
+	 * 
+	 * @return le caractere
+	 */
+	String commentsDelimiter() default "#";
 
-    /**
-     * Retourne le commentaire de la valeur.
-     * 
-     * @return le commentaire
-     */
-    String comments() default "";
+	/**
+	 * Retourne le commentaire de la valeur.
+	 * 
+	 * @return le commentaire
+	 */
+	String comments() default "";
 
-    /**
-     * Le bundle du fichier de configuration.
-     * 
-     * @return le bundle
-     */
-    String bundle() default "";
+	/**
+	 * Le bundle du fichier de configuration.
+	 * 
+	 * @return le bundle
+	 */
+	String bundle() default "";
 
-    /**
-     * Autorise le chargement a chaud.
-     * 
-     * @return vrai si le chargement a chaud est actif
-     */
-    boolean autoReload() default false;
+	/**
+	 * Autorise le chargement a chaud.
+	 * 
+	 * @return vrai si le chargement a chaud est actif
+	 */
+	boolean autoReload() default false;
 }

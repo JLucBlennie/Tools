@@ -146,8 +146,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 					}
 				}
 			}
-		}
-		catch (IllegalArgumentException | IllegalAccessException e) {
+		} catch (IllegalArgumentException | IllegalAccessException e) {
 			setException(e);
 		}
 	}
@@ -182,8 +181,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 					}
 					Tools.putValueInMapOfCollection(mWatchableFiles, dir, dicoFile.toPath().normalize());
 					mKVFiles.put(dicoFile.getName(), kvFile);
-				}
-				catch (IOException e) {
+				} catch (IOException e) {
 					LogTracer.getLogger().error("Impossible de scruter le dictionnaire " + bundle, e);
 				}
 			}
@@ -288,8 +286,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 			Object value = properties.get(entry.getKey());
 			if (entry.isMandatory() && value == null) {
 				missingEntries.add(entry);
-			}
-			else if (value != null) {
+			} else if (value != null) {
 				Object v = entry.getDefaultValue().getClass().cast(value);
 				boolean isAccepted = false;
 				if (entry.getPossibleValues().length > 0) {
@@ -298,22 +295,19 @@ public class GenericKeyValueFile implements IKeyValueFile {
 							isAccepted = true;
 						}
 					}
-				}
-				else {
+				} else {
 					isAccepted = true;
 				}
 				if (isAccepted) {
 					mValues.put(entry.getKey(), v);
-				}
-				else {
+				} else {
 					throw new IOException(MessageFormat.format(EN_VALUE_OUT_OF_BOUNDS, entry.getKey(), value, Arrays.toString(entry.getPossibleValues())));
 				}
 			}
 		}
 		if (missingEntries.isEmpty()) {
 			mIsLoaded = true;
-		}
-		else {
+		} else {
 			StringBuilder sb = new StringBuilder(EN_MISSING_MANDATORY_KEYS).append(LS);
 			for (IKeyValueFileEntry missingEntry : missingEntries) {
 				sb.append(missingEntry.getKey()).append(LS);
@@ -330,8 +324,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 		Properties loadedProperties = new Properties();
 		try {
 			loadedProperties.load(is);
-		}
-		finally {
+		} finally {
 			if (is != null) {
 				is.close();
 			}
@@ -347,8 +340,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 		InputStream is = null;
 		try {
 			is = url.openStream();
-		}
-		finally {
+		} finally {
 			if (is != null) {
 				is.close();
 			}
@@ -374,18 +366,15 @@ public class GenericKeyValueFile implements IKeyValueFile {
 				Class<? extends Object> classOfDefaultValue = entry.getDefaultValue().getClass();
 				if (classOfDefaultValue == int.class || classOfDefaultValue == Integer.class) {
 					value = Integer.parseInt((String) value);
-				}
-				else if (classOfDefaultValue == double.class || classOfDefaultValue == Double.class) {
+				} else if (classOfDefaultValue == double.class || classOfDefaultValue == Double.class) {
 					value = Double.parseDouble((String) value);
-				}
-				else if (classOfDefaultValue == long.class || classOfDefaultValue == Long.class) {
+				} else if (classOfDefaultValue == long.class || classOfDefaultValue == Long.class) {
 					String sLong = (String) value;
 					if (sLong.toUpperCase().endsWith("L")) {
 						sLong = sLong.substring(0, sLong.length() - 1);
 					}
 					value = Long.parseLong(sLong);
-				}
-				else if (classOfDefaultValue == boolean.class || classOfDefaultValue == Boolean.class) {
+				} else if (classOfDefaultValue == boolean.class || classOfDefaultValue == Boolean.class) {
 					value = Boolean.valueOf((String) value);
 				}
 
@@ -398,18 +387,15 @@ public class GenericKeyValueFile implements IKeyValueFile {
 							break;
 						}
 					}
-				}
-				else {
+				} else {
 					isAccepted = true;
 				}
 				if (isAccepted) {
 					mValues.put(entry.getKey(), value);
-				}
-				else {
+				} else {
 					throw new IllegalArgumentException(MessageFormat.format(EN_VALUE_OUT_OF_BOUNDS, entry.getKey(), value, Arrays.toString(entry.getPossibleValues())));
 				}
-			}
-			catch (MissingResourceException e) {
+			} catch (MissingResourceException e) {
 				if (entry.isMandatory()) {
 					missingEntries.add(entry);
 				}
@@ -417,8 +403,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 		}
 		if (missingEntries.isEmpty()) {
 			mIsLoaded = true;
-		}
-		else {
+		} else {
 			StringBuilder sb = new StringBuilder(EN_MISSING_MANDATORY_KEYS).append(LS);
 			for (IKeyValueFileEntry missingEntry : missingEntries) {
 				sb.append(missingEntry.getKey()).append(LS);
@@ -442,8 +427,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 		mLoadException = null;
 		if (mLastLoadingMethod == LOADING_METHOD_URL) {
 			loadUrl((URL) mLastLoadingMethodArg);
-		}
-		else if (mLastLoadingMethod == LOADING_METHOD_BUNDLE) {
+		} else if (mLastLoadingMethod == LOADING_METHOD_BUNDLE) {
 			ResourceBundle.clearCache();
 			loadBundle((ResourceBundle) mLastLoadingMethodArg);
 		}
@@ -540,8 +524,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 		if (!mIsLoaded) {
 			if (getException() != null) {
 				throw new PropertyNotFoundException(message, getException());
-			}
-			else {
+			} else {
 				throw new PropertyNotFoundException(message);
 			}
 		}
@@ -580,8 +563,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 			boolean isGoodType = false;
 			try {
 				isGoodType = IKeyValueFileEntry.class.isInstance(field.get(null));
-			}
-			catch (IllegalArgumentException | IllegalAccessException e1) {
+			} catch (IllegalArgumentException | IllegalAccessException e1) {
 				LogTracer.getLogger().debug(e1.getMessage(), e1);
 			}
 
@@ -617,8 +599,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 						val = val.replaceAll("([^'])'([^'])", "$1''$2");
 						sb.append(entry.getKey()).append(EGAL).append(val);
 						sb.append(LS2);
-					}
-					catch (IllegalArgumentException | IllegalAccessException e) {
+					} catch (IllegalArgumentException | IllegalAccessException e) {
 						LogTracer.getLogger().debug(e.getMessage(), e);
 					}
 				}
@@ -724,8 +705,7 @@ public class GenericKeyValueFile implements IKeyValueFile {
 	public final String toString() {
 		try {
 			return getValueFileAsString();
-		}
-		catch (Throwable e) {
+		} catch (Throwable e) {
 			return mValues.toString();
 		}
 	}
@@ -824,11 +804,9 @@ public class GenericKeyValueFile implements IKeyValueFile {
 
 				if (defaultValue instanceof File) {
 					value = new File((String) value);
-				}
-				else if (defaultValue instanceof Dimension) {
+				} else if (defaultValue instanceof Dimension) {
 					value = Tools.parseDimension((String) value);
-				}
-				else if (defaultValue instanceof Color) {
+				} else if (defaultValue instanceof Color) {
 					value = Tools.parseColor((String) value);
 				}
 			}
